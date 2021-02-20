@@ -1,0 +1,18 @@
+
+[CommomParameter]
+DefaultColorWidth = 640
+DefaultColorHeight = 480
+; [image type] 0 : YUYV, 1: MJPEG
+DefaultImageType = 0;
+DefaultDepthWidth = 320
+DefaultDepthHeight = 480
+; [depth type] 1 : 8bits, 2 : 14bits, 3 : 8bits+0x80, 4 : 11bits 
+DefaultDepthType = 1
+DistanceMeterMethod = 0
+DepthAvgBlockSize   = 6
+
+[CollisionWarning]
+ActualThresholdNearDistance = 50
+ActualThresholdFarDistance = 100
+RatioNear = 204
+RatioFar = 128
