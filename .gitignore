@@ -20,3 +20,4 @@ __pycache__
 *.old
 catboost.mp4
 large_dataset
+datasets
