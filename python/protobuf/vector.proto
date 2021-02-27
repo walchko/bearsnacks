@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message Vector {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+  double timestamp = 4;
+}
