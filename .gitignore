@@ -21,3 +21,4 @@ __pycache__
 catboost.mp4
 large_dataset
 datasets
+*_AllanVar.npy
