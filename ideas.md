@@ -23,9 +23,11 @@
 - **mjolnir**: 3d camera
     - [mjolnir](https://github.com/MomsFriendlyRobotCompany/mjolnir)
 - apriltag calibration target
-    - targets, selectable which tag
+    - targets, selectable which tag encoding ... really don't need a lot
     - plexi 6x6 or 4x6 encased targets using 16h5 targets
-    - backlit? coat back with shiny material (aluminum foil?) to reflect light?
+    - backlit? 
+        - coat back with shiny material (aluminum foil?) to reflect light?
+        - print target on acetate so paper isn't blocking light? how does this impact black colors?
     - printed frame?
         - maybe just 1 pane of plexi covering printout and back is printed plastic?
         - 1 pane makes printing easier?
