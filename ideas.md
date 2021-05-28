@@ -1,0 +1,36 @@
+# Robotics
+
+- use my 7in pi LCD and create an animated robot head moved by some RC servos (left/right, up/down)
+- develop an AX12 ardino interface to a computer
+    - from boot, send setup file: {number servos, {servo1, max, min}, ..., {servoN, max, min}}
+    - simple serial interface to move servos: {s0:angle,speed, ..., sN:angle,speed}
+- arduino AHRS (madwig, mahoney) with matrix lib
+    - output quaternion
+        - mahoney: gyro and accel
+        - madwig: gyro, accel, and mag
+        - ahrs: accel and mag
+    - from boot, sent calibration values for sensors
+    - from boot, determine type of orientation filter
+    - turn on/off calibration
+- **RANGER:** arduino controlled RC car interface
+    - [Ranger repo](https://github.com/MomsFriendlyRobotCompany/ranger)
+    - ESC control
+    - Steering control
+    - feedback
+        - current speed setting and direction
+        - current (amps)
+        - other sensors?
+- **mjolnir**: 3d camera
+    - [mjolnir](https://github.com/MomsFriendlyRobotCompany/mjolnir)
+- apriltag calibration target
+    - targets, selectable which tag
+    - plexi 6x6 or 4x6 encased targets using 16h5 targets
+    - backlit? coat back with shiny material (aluminum foil?) to reflect light?
+    - printed frame?
+        - maybe just 1 pane of plexi covering printout and back is printed plastic?
+        - 1 pane makes printing easier?
+    - anti-glare cover?
+    - mounting point for tripod or other
+    - accel orienataion with wifi/bt or lcd orientation (roll/pitch)
+        - qypi $6, lsm6ds33 $6, lcd ?
+        - external usb power
