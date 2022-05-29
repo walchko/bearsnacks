@@ -18,6 +18,36 @@
 python -m venv <folder_location>
 ```
 
+## Github Workflow
+
+```python
+name: CheckPackage
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+          max-parallel: 5
+          fail-fast: true
+          matrix:
+            python-version: ["3.8", "3.9", "3.10"]
+        steps:
+            - uses: actions/checkout@master
+            - name: Setup Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v2
+              with:
+                python-version: ${{ matrix.python-version }}
+            - name: Install packages
+              run: |
+                echo "Installing dependencies"
+                python3 -m venv .venv
+                source .venv/bin/activate
+                pip install -U pip setuptools wheel poetry pytest
+                poetry install
+                pytest tests/
+```
+
 ## Switching Venv
 
 When you have setup multiple `venv`'s, add the following to your `bashrc`/`zshrc` profile and you can easily change between them with `changevenv <new_venv>`. All of my virtual environments are located in my home directory at `$HOME/venvs`, which is why you see `DIR="$HOME/venvs/$1"` bellow.
