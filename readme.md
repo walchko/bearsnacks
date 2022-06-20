@@ -6,7 +6,7 @@
 - [Machine Learning](https://nbviewer.jupyter.org/github/walchko/bearsnacks/blob/main/machine-learning/index.ipynb)
 - [Python](python/index.ipynb)
 - [Space](space/index.ipynb)
-- [Mathematics](mathamatics/index.ipynb)
+- [Engineering Toolbox](engineering-toolbox/index.ipynb)
 - [Drones](drones/index.ipynb)
 - [Data Science](data-science/index.ipynb)
 
@@ -83,7 +83,7 @@ def videoWrite(frames, fname='out.mp4'):
     # pick a good encoder for the current OS
     sys = platform.system()
     if sys in ['Darwin']:  # this is on macOS
-        fourcc = 'avc1'
+        fourcc = "mp4v" # 'avc1' - old?
     else:  # this is for Windoze
         fourcc = 'mjpg'
         
