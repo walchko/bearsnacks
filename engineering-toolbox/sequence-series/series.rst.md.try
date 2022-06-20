@@ -1,0 +1,193 @@
+Sequences and Series
+====================
+
+date
+
+:   2015-10-11
+
+summary
+
+:   Infinite series summary
+
+Sequence
+--------
+
+A **sequence** is an ordered list of numbers (e.g., $a_n$); the numbers
+are called \"elements\" or \"terms\". Every convergent sequence is
+bounded, thus an unbounded sequence is divergent.
+
++----------------------+----------------------+----------------------+
+| Sequence Test        | Converge             | Notes                |
++======================+======================+======================+
+| Squeeze Theorem Def  | $\lim\lim            | $                    |
+| 1, pg 692            | its_{n \to \infty} a | a_n \le b_n \le c_n$ |
+|                      | _n = \lim\limits_{n  |                      |
+|                      | \to \infty} c_n = L$ |                      |
+|                      | then                 |                      |
+|                      | $\lim\limits_{n      |                      |
+|                      | \to \infty} b_n = L$ |                      |
+|                      | $\lim\limits_{n      |                      |
+|                      | \to \infty} a_n = L$ |                      |
++----------------------+----------------------+----------------------+
+| l\'Hospital\'s Rule  | $\lim                | > where $f(x)$ =     |
+| Theorem 3, pg 693    | \limits_{n \to \inft | > numerator and      |
+| Theorem 6, pg 694    | y} \frac{f(x)}{g(x)} | > $g(x)$ =           |
+|                      |  \Rightarrow \lim\li | > denominator        |
+|                      | mits_{n \to \infty}  |                      |
+|                      | \frac{f'(x)}{g'(x)}$ |                      |
+|                      | if $f(n) = a_n$ then |                      |
+|                      | $\lim\limits_{n      |                      |
+|                      |  \to \infty} f(x)=L$ |                      |
+|                      | $\lim\limits_{n \to  |                      |
+|                      |  \infty} | a_n | =0$ |                      |
+|                      | then $a_n$ converges |                      |
++----------------------+----------------------+----------------------+
+| Theorem 9, pg 696    | $\lim\limits         | Divergent for all    |
+|                      | _{n \to \infty} r^n  | other values of $r$  |
+|                      | = \begin{cases} 0, & |                      |
+|                      |  \text{if } -1 < r < |                      |
+|                      |  1 \\ 1, & \text{if  |                      |
+|                      | } r = 1 \end{cases}$ |                      |
++----------------------+----------------------+----------------------+
+| Theorem 12, pg 698   | Every bounded        | The bounds exists    |
+|                      | ($m \le a_n \le M$), | for $n \ge 1$, also  |
+|                      | monotonic sequence   | see Theorem 10 and   |
+|                      | is convergent        | 11                   |
++----------------------+----------------------+----------------------+
+
+Series
+------
+
+A **series** is the sum of the terms of a sequence:
+$\sum\limits_{n=1}^\infty a_n$.
+
++----------------+----------------+----------------+----------------+
+| Series Test    | Converge       | Diverge        | Notes          |
++================+================+================+================+
+| > Divergence   | N/A            | $\lim\li       | > Doesn\'t     |
+|                |                | mits_{n\to\inf | > show         |
+|                |                | ty} a_n \ne 0$ | > convergence  |
+|                |                |                | > and the      |
+|                |                |                | > converse is  |
+|                |                |                | > not true     |
++----------------+----------------+----------------+----------------+
+| > Integral     | if             | if             | > $f(x)$ must  |
+|                | $\             | $\             | > be positive, |
+|                | int\limits_1^\ | int\limits_1^\ | > decreasing,  |
+|                | infty f(x) dx$ | infty f(x) dx$ | > and          |
+|                | converges      | diverges       | > continous,   |
+|                |                |                | > also         |
+|                |                |                | > $f(          |
+|                |                |                | n) = a_n \text |
+|                |                |                | { for all } n$ |
++----------------+----------------+----------------+----------------+
+| > Root         | $\lim\l        | $\lim\limits   | > inconclusive |
+|                | imits_{n\to\in | _{n\to\infty}\ | > if $L = 1$   |
+|                | fty}\sqrt[n]{| | sqrt[n]{|a_n|} |                |
+|                | a_n|} = L < 1$ |  = L > 1 \text |                |
+|                |                | { or } \infty$ |                |
++----------------+----------------+----------------+----------------+
+| > Ratio        | $\lim\limits   | $\l            | > inconclusive |
+|                | _{n\to\infty}  | im\limits_{n\t | > if $L = 1$   |
+|                | \left| \frac{a | o\infty} \left |                |
+|                | _{n+1}}{a_n}\r | | \frac{a_{n+1 |                |
+|                | ight| = L < 1$ | }}{a_n}\right| |                |
+|                |                |  = L > 1 \text |                |
+|                |                | { or } \infty$ |                |
++----------------+----------------+----------------+----------------+
+| > Direct       | $0 \le a_n     | $0 \le b_n     | >              |
+| > Comparison   | \le b_n  \text | \le a_n  \text |  $a_n,b_n > 0$ |
+|                | { for all } n$ | { for all } n$ |                |
+|                | and            | and            |                |
+|                | $\su           | $\su           |                |
+|                | m\limits_{n=1} | m\limits_{n=1} |                |
+|                | ^{\infty} b_n$ | ^{\infty} b_n$ |                |
+|                | converges      | diverges       |                |
++----------------+----------------+----------------+----------------+
+| > Limit        | $\li           | $\li           | >              |
+| > Comparison   | m\limits_{n\to | m\limits_{n\to |  $a_n,b_n > 0$ |
+| > Absolute     | \infty} \frac{ | \infty} \frac{ | > and L is a   |
+| > Conditional  | a_n}{b_n} = L$ | a_n}{b_n} = L$ | > positive     |
+|                | and            | and            | > constant, if |
+|                | $\su           | $\su           | > L is         |
+|                | m\limits_{n=1} | m\limits_{n=1} | > $\infty$ or  |
+|                | ^{\infty} b_n$ | ^{\infty} b_n$ | > 0, then pick |
+|                | converges      | diverges       | > a different  |
+|                | $\sum\limits   |                | > $b_n$        |
+|                | _{n=1}^{\infty |                | > Definition   |
+|                | } | a_n | = 0$ |                | > of           |
+|                | $\sum\li       |                | > absolutely   |
+|                | mits_{n=1}^{\i |                | > convergent,  |
+|                | nfty} | a_n |$ |                | > the sum is   |
+|                | diverges but   |                | > independent  |
+|                | $\su           |                | > of the order |
+|                | m\limits_{n=1} |                | > in which the |
+|                | ^{\infty} a_n$ |                | > terms are    |
+|                | converges      |                | > summed The   |
+|                |                |                | > sum is       |
+|                |                |                | > dependent of |
+|                |                |                | > the order in |
+|                |                |                | > which the    |
+|                |                |                | > terms are    |
+|                |                |                | > summed       |
++----------------+----------------+----------------+----------------+
+
+Common Series
+-------------
+
++-------------+-------------+-------------+-------------+-------------+
+| Series Test | Formula     | Converge    | Diverge     | Notes       |
++=============+=============+=============+=============+=============+
+| >           | $\sum\li    | $0 < a_     | N/A         |             |
+| Alternating | mits_{n=1}^ | {n+1} \le a |             |             |
+|             | \infty (-1) | _n \text{ f |             |             |
+|             | ^{n-1} a_n$ | or all } n$ |             |             |
+|             |             | and         |             |             |
+|             |             | $\l         |             |             |
+|             |             | im\limits_{ |             |             |
+|             |             | n \to \inft |             |             |
+|             |             | y} a_n = 0$ |             |             |
++-------------+-------------+-------------+-------------+-------------+
+| > Geometric | $\          | $|r| < 1$   | $|r| \ge 1$ | finite sum  |
+|             | sum\limits_ | and         |             | of the      |
+|             | {n=1}^\inft | converges   |             | first n     |
+|             | y ar^{n-1}$ | to          |             | terms:      |
+|             |             | $\fr        |             | $=          |
+|             |             | ac{a}{1-r}$ |             |  \frac{a(1- |
+|             |             |             |             | r^n)}{1-r}$ |
++-------------+-------------+-------------+-------------+-------------+
+| > P-Series  | $\sum\l     | $p > 1$     | $p \le 1$   | cannot      |
+| > Power     | imits_{n=1} | $\begin{ar  |             | calculate   |
+|             | ^\infty \fr | ray}{l} i,  |             | sum $R$ is  |
+|             | ac{1}{n^p}$ |  \text{conv |             | the radius  |
+|             | $\sum       | erge if } x |             | of          |
+|             | \limits_{n= | =a \\  ii,  |             | c           |
+|             | 0}^\infty c |  \text{conv |             | onvergence, |
+|             | _n (x-a)^n$ | erge for al |             | you need to |
+|             |             | l } x \\ ii |             | check the   |
+|             |             | i,  \text{c |             | end points  |
+|             |             | onverge if  |             | for         |
+|             |             | } |x-a|<R \ |             | convergence |
+|             |             | end{array}$ |             | too.        |
+|             |             |             |             | Typically   |
+|             |             |             |             | use Ratio   |
+|             |             |             |             | Test.       |
++-------------+-------------+-------------+-------------+-------------+
+| > Taylor    | $\sum\lim   | $|x-a|<R$   | $|x-a|>R$   | Taylor      |
+|             | its_{n=0}^\ |             |             | series is   |
+|             | infty \frac |             |             | centered    |
+|             | {f^n (a)}{n |             |             | about a.    |
+|             | !} (x-a)^n$ |             |             | Same note   |
+|             |             |             |             | as power    |
+|             |             |             |             | series      |
++-------------+-------------+-------------+-------------+-------------+
+| > Maclaurin | $\sum\l     | $|x|<R$     | $|x|>R$     | A Macluarin |
+|             | imits_{n=0} |             |             | series is a |
+|             | ^\infty \fr |             |             | Taylor      |
+|             | ac{f^n (0)} |             |             | series      |
+|             | {n!} (x)^n$ |             |             | centered    |
+|             |             |             |             | about 0.    |
+|             |             |             |             | Same note   |
+|             |             |             |             | as power    |
+|             |             |             |             | series      |
++-------------+-------------+-------------+-------------+-------------+
