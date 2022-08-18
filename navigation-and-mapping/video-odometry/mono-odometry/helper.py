@@ -3,9 +3,9 @@ import cv2
 from matplotlib import pyplot as plt
 import os
 
-from collections import namedtuple
+# from collections import namedtuple
 
-Vector = namedtuple("Vector","x y z")
+# Vector = namedtuple("Vector","x y z")
 
 bgr2rgb = lambda im: cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
 rgb2bgr = lambda im: cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
@@ -82,60 +82,60 @@ def videoWriter(inframes, fname='out.mp4', fps=30, fourcc = 'avc1'):
 
 # deg2rad = np.pi/180.0
 
-def  mdeglat(lat):
-    '''
-    Provides meters-per-degree latitude at a given latitude
+# def  mdeglat(lat):
+#     '''
+#     Provides meters-per-degree latitude at a given latitude
     
-    Args:
-      lat (deg): latitude
-    Returns:
-      float: meters-per-degree value
-    '''
-    latrad = lat*deg2rad
+#     Args:
+#       lat (deg): latitude
+#     Returns:
+#       float: meters-per-degree value
+#     '''
+#     latrad = lat*deg2rad
 
-    dy = 111132.09 - 566.05 * np.cos(2.0*latrad) \
-        + 1.20 * np.cos(4.0*latrad) - 0.002 * np.cos(6.0*latrad)
-    return dy
+#     dy = 111132.09 - 566.05 * np.cos(2.0*latrad) \
+#         + 1.20 * np.cos(4.0*latrad) - 0.002 * np.cos(6.0*latrad)
+#     return dy
 
-def mdeglon(lat):
-    '''
-    Provides meters-per-degree longitude at a given latitude
-    Args:
-      lat (deg): latitude in decimal degrees
-    Returns:
-      float: meters per degree longitude
-    '''
-    latrad = lat*deg2rad
+# def mdeglon(lat):
+#     '''
+#     Provides meters-per-degree longitude at a given latitude
+#     Args:
+#       lat (deg): latitude in decimal degrees
+#     Returns:
+#       float: meters per degree longitude
+#     '''
+#     latrad = lat*deg2rad
     
-    dx = 111415.13 * np.cos(latrad) \
-        - 94.55 * np.cos(3.0*latrad) + 0.12 * np.cos(5.0*latrad)
-    return dx
+#     dx = 111415.13 * np.cos(latrad) \
+#         - 94.55 * np.cos(3.0*latrad) + 0.12 * np.cos(5.0*latrad)
+#     return dx
 
-def ll2xy(lat, lon, orglat, orglon):
-    '''
-    AlvinXY: Lat/Long to X/Y
-    Converts Lat/Lon (WGS84) to Alvin XYs using a Mercator projection.
-    Args:
-      lat (deg): Latitude of location
-      lon (deg): Longitude of location
-      orglat (deg): Latitude of origin location
-      orglon (deg): Longitude of origin location
-    Returns:
-      tuple: (x,y) where...
-        x is Easting in m (Alvin local grid)
-        y is Northing in m (Alvin local grid)
-    '''
-    x = (lon - orglon) * mdeglon(orglat);
-    y = (lat - orglat) * mdeglat(orglat);
-    return (x,y)
+# def ll2xy(lat, lon, orglat, orglon):
+#     '''
+#     AlvinXY: Lat/Long to X/Y
+#     Converts Lat/Lon (WGS84) to Alvin XYs using a Mercator projection.
+#     Args:
+#       lat (deg): Latitude of location
+#       lon (deg): Longitude of location
+#       orglat (deg): Latitude of origin location
+#       orglon (deg): Longitude of origin location
+#     Returns:
+#       tuple: (x,y) where...
+#         x is Easting in m (Alvin local grid)
+#         y is Northing in m (Alvin local grid)
+#     '''
+#     x = (lon - orglon) * mdeglon(orglat);
+#     y = (lat - orglat) * mdeglat(orglat);
+#     return (x,y)
 
-def xy2latlon(x, y, lat0, lon0):
-    """
+# def xy2latlon(x, y, lat0, lon0):
+#     """
     
-    """
-    lon = x/mdeglon(lat0) + lon0
-    lat = y/mdeglat(lat0) + lat0
-    return lat, lon
+#     """
+#     lon = x/mdeglon(lat0) + lon0
+#     lat = y/mdeglat(lat0) + lat0
+#     return lat, lon
 
 def imshow(img, cmap=None):
     if cmap:
