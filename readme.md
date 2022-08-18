@@ -91,8 +91,15 @@ function changevenv () {
 import numpy as np                        # matrix manipulations
 from numpy.testing import assert_allclose # compare numpy arrays
 from numpy.linalg import norm             # normalize numpy vectors
-np.set_printoptions(precision=1)
+np.set_printoptions(precision=3)
 np.set_printoptions(suppress=True)
+```
+
+## Matplotlib
+
+```python
+plt.axis("off")  # turn off axis labels on images
+plt.ticklabel_format(style='plain') # to prevent scientific notation
 ```
 
 ## Embed Video
@@ -105,6 +112,18 @@ Video.from_file("Megamind.mp4")
 ## OpenCV
 
 ```python
+bgr2rgb = lambda im: cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+rgb2bgr = lambda im: cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
+
+hsv2bgr = lambda im: cv2.cvtColor(im, cv2.COLOR_HSV2BGR)
+bgr2hsv = lambda im: cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
+
+bgr2gray = lambda im: cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+gray2bgr = lambda im: cv2.cvtColor(im, cv2.COLOR_GRAY2BGR)
+
+rgb2gray = lambda im: cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)
+gray2rgb = lambda im: cv2.cvtColor(im, cv2.COLOR_GRAY2RGB)
+
 # simple function to save a video
 import platform
 def videoWrite(frames, fname='out.mp4'):
