@@ -36,46 +36,46 @@ def printCameraParams(P1):
     print(r1)
     print('Translation Vector:')
     print(t1.round(4).ravel())
-    
+
 
 def videoWriter(inframes, fname='out.mp4', fps=30, fourcc = 'avc1'):
     frames = [x for x in inframes]
     shape = frames[0].shape
-    
+
     frame_height, frame_width = shape[:2]
-    
+
     # video writer doesn't like grayscale images, have
     # to convert to RGB
     if len(shape) == 2:
         grayscale = True
     else:
         grayscale = False
-    
+
     # fourcc = 'avc1'
     # fourcc = 'mjpg'
-    
+
     print('>> Saving {} {}x{} images using {}'.format(len(frames), shape[1], shape[0], fourcc))
-    
+
     # create the video writer and write all frames to the file
     out = cv2.VideoWriter(
         fname,
-        cv2.VideoWriter_fourcc(*fourcc), 
-        fps, 
+        cv2.VideoWriter_fourcc(*fourcc),
+        fps,
         (frame_width,frame_height))
-    
+
     for frame in frames:
         # convert if necessary to RGB
         if grayscale:
             frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB)
         else:
-            
+
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         out.write(frame)
-    
+
     out.release()
     print(f'>> wrote {os.path.getsize(fname)/1e6:.1f} MB to {fname}')
-    
-    
+
+
 # https://wiki.nps.edu/display/RC/Local+Coordinate+Frames
 # https://www.researchgate.net/publication
 #        /224239584_Rectilinear_coordinate_frames_for_Deep_sea_navigation
@@ -85,7 +85,7 @@ def videoWriter(inframes, fname='out.mp4', fps=30, fourcc = 'avc1'):
 # def  mdeglat(lat):
 #     '''
 #     Provides meters-per-degree latitude at a given latitude
-    
+
 #     Args:
 #       lat (deg): latitude
 #     Returns:
@@ -106,7 +106,7 @@ def videoWriter(inframes, fname='out.mp4', fps=30, fourcc = 'avc1'):
 #       float: meters per degree longitude
 #     '''
 #     latrad = lat*deg2rad
-    
+
 #     dx = 111415.13 * np.cos(latrad) \
 #         - 94.55 * np.cos(3.0*latrad) + 0.12 * np.cos(5.0*latrad)
 #     return dx
@@ -131,7 +131,7 @@ def videoWriter(inframes, fname='out.mp4', fps=30, fourcc = 'avc1'):
 
 # def xy2latlon(x, y, lat0, lon0):
 #     """
-    
+
 #     """
 #     lon = x/mdeglon(lat0) + lon0
 #     lat = y/mdeglat(lat0) + lat0
@@ -144,7 +144,7 @@ def imshow(img, cmap=None):
         plt.imshow(img)
     plt.title(f"{img.shape}")
     plt.axis("off")
-    
+
 # def pil2opencv(imgs, hist_equ=False):
 #     if hist_equ:
 #         ret = [cv2.equalizeHist(np.array(x)) for x in imgs]

@@ -85,6 +85,20 @@ function changevenv () {
 %autoreload 2
 ```
 
+## JupyterTollBox (`jtb`)
+
+```python
+from jtb import getCodeUrl, getCodeFile, getCodeImport
+
+import bob
+getCodeImport(bob)      # will show everthing
+getCodeImport(bob.func) # show just function func
+
+getCodeFile("path/to/file")
+
+getCodeUrl("github.com/user/repo/file.py")
+```
+
 ## NumPy
 
 ```python
