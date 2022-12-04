@@ -31,11 +31,11 @@ jobs:
           max-parallel: 5
           fail-fast: true
           matrix:
-            python-version: ["3.8", "3.9", "3.10"]
+            python-version: ["3.8", "3.9", "3.10", "3.11"]
         steps:
-            - uses: actions/checkout@master
+            - uses: actions/checkout@main
             - name: Setup Python ${{ matrix.python-version }}
-              uses: actions/setup-python@v2
+              uses: actions/setup-python@main
               with:
                 python-version: ${{ matrix.python-version }}
             - name: Install packages
