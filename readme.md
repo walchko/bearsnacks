@@ -185,3 +185,89 @@ def videoWrite(frames, fname='out.mp4'):
         out.write(frame)
     out.release()
 ```
+## `atexit` and `signal`
+
+```python
+#!/usr/bin/env python3
+import time
+import atexit
+import signal
+import sys
+import platform
+
+signals = {
+    1: "signal.SIGHUP",
+    2: "signal.SIGINT",
+    9: "signal.SIGKILL",
+    15: "signal.SIGTERM",
+    18: "signal.SIGTSTP",
+}
+
+def captureSignal(signum, frame):
+    print(f"\nSignal: {signals[signum]}[{signum}]  Frame: {frame}")
+    sys.exit(0) # force exit
+
+def stop():
+    print("STOP ... last this to print")
+
+
+if __name__ == "__main__":
+    print(f"Platform: {platform.machine()}")
+
+    signal.signal(signal.SIGINT, captureSignal) # ctrl-C
+    signal.signal(signal.SIGTERM, captureSignal) # ??
+    signal.signal(signal.SIGTSTP, captureSignal) # ctrl-z
+    atexit.register(stop)
+
+    try:
+        while True:
+            time.sleep(0.1)
+    except KeyboardInterrupt:
+        print("KeyboardInterrupt")
+    finally:
+        print(" ... ")
+```
+
+```python
+import logging
+import signal
+import sys
+
+
+class TerminateProtected:
+    """ Protect a piece of code from being killed by SIGINT or SIGTERM.
+    It can still be killed by a force kill.
+
+    Example:
+        with TerminateProtected():
+            run_func_1()
+            run_func_2()
+
+    Both functions will be executed even if a sigterm or sigkill has been received.
+    """
+    killed = False
+
+    def _handler(self, signum, frame):
+        logging.error("Received SIGINT or SIGTERM! Finishing this block, then exiting.")
+        self.killed = True
+
+    def __enter__(self):
+        self.old_sigint = signal.signal(signal.SIGINT, self._handler)
+        self.old_sigterm = signal.signal(signal.SIGTERM, self._handler)
+
+    def __exit__(self, type, value, traceback):
+        if self.killed:
+            sys.exit(0)
+        signal.signal(signal.SIGINT, self.old_sigint)
+        signal.signal(signal.SIGTERM, self.old_sigterm)
+
+
+if __name__ == '__main__':
+    print("Try pressing ctrl+c while the sleep is running!")
+    from time import sleep
+    with TerminateProtected():
+        sleep(10)
+        print("Finished anyway!")
+    print("This only prints if there was no sigint or sigterm")
+```
+[code ref](https://stackoverflow.com/a/50174144/5374768)
