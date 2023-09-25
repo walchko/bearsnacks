@@ -76,6 +76,39 @@ function changevenv () {
 
 # Jupyter Lab
 
+## Opening Non-default Browser
+
+My default is Safari, but it sucks with `jupyter-lab`, so I want to use 
+Firefox. First, generate a config file for `jupyter-lab`
+
+```
+jupyter-lab --generate-config
+```
+
+Make these two changes in the `~/.jupyter/jupyter_lab_config.py` file:
+
+```python
+## Specify what command to use to invoke a web
+#                        browser when starting the server. If not specified, the
+#                        default browser will be determined by the `webbrowser`
+#                        standard library module, which allows setting of the
+#                        BROWSER environment variable to override it.
+#  Default: ''
+c.ServerApp.browser = 'open -a /Applications/Firefox.app %s'
+
+## Specify where to open the server on startup. This is the
+#          `new` argument passed to the standard library method `webbrowser.open`.
+#          The behaviour is not guaranteed, but depends on browser support. Valid
+#          values are:
+#
+#           - 2 opens a new tab,
+#           - 1 opens a new window,
+#           - 0 opens in an existing window.
+#
+#          See the `webbrowser.open` documentation for details.
+#  Default: 2
+c.ServerApp.webbrowser_open_new = 1
+```
 
 ## Reload Imports
 
